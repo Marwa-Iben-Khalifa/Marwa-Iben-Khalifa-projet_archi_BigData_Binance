@@ -30,4 +30,3 @@ services:
       - "8888:8888"
     volumes:
       - ./work:/home/jovyan/work
-      - ./work/model:/tmp/model_prediction
