@@ -9,6 +9,7 @@ import os
 
 # Globals vars
 path = '/home/jovyan/work/data/'
+path = '/home/ivanb/Documents/testcryptos/'
 
 crypto_list = [
     'BNBBUSD',
@@ -30,8 +31,9 @@ for coin in crypto_list:
     start_date = datetime.now()+timedelta(days= -1)
     
     # Create folder if not exists
-    folder_name = f'{path}{coin}'
-    Path(folder_name).mkdir(parents=True, exist_ok=True)
+    #folder_name = f'{path}{coin}'
+    #Path(folder_name).mkdir(parents=True, exist_ok=True)
+    folder_name = f'{path}'
 
     while start_date < end_date:
         # Increment one day

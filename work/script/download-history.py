@@ -31,8 +31,9 @@ for coin in crypto_list:
     start_date = datetime.now()+timedelta(days= -(365*2))
     
     # Create folder if not exists
-    folder_name = f'{path}{coin}'
-    Path(folder_name).mkdir(parents=True, exist_ok=True)
+    #folder_name = f'{path}{coin}'
+    #Path(folder_name).mkdir(parents=True, exist_ok=True)
+    folder_name = f'{path}'
 
     while start_date < end_date:
         # Increment one day
