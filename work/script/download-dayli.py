@@ -8,7 +8,7 @@ from pathlib import Path
 import os
 
 # Globals vars
-path = '/home/jovyan/work/script/results/'
+path = '/home/jovyan/work/data/'
 #path = '/home/ivanb/Documents/testcryptos/'
 
 crypto_list = [
