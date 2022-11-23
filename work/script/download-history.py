@@ -9,7 +9,8 @@ import os
 
 # Globals vars
 #path = '/home/jovyan/work/data/'
-path = '/home/jovyan/work/data/'
+global path
+path = '/work/data/'
 #path = '/home/ivanb/Documents/testcryptos/'
 
 crypto_list = [
@@ -35,14 +36,14 @@ for coin in crypto_list:
     # Create folder if not exists
     #folder_name = f'{path}{coin}'
     #Path(folder_name).mkdir(parents=True, exist_ok=True)
-    folder_name = f'{path}'
+    folder_name = path
 
     while start_date < end_date:
         # Increment one day
         def download_and_unzip(my_date, coin_name, folder_nm):
             def return_good_format(val):
                 if len(str(val)) == 1:
-                    return f'0{str(val)}'
+                    return '0'+str(val)
                 else:
                     return str(val)
 
@@ -50,16 +51,16 @@ for coin in crypto_list:
             _m = return_good_format(my_date.month)
             _d = return_good_format(my_date.day)
 
-            _url = f'https://data.binance.vision/data/spot/daily/klines/{coin_name}/4h/{coin_name}-4h-{_y}-{_m}-{_d}.zip'
-            file_name = f'{coin_name}-4h-{_y}-{_m}-{_d}'
+            _url = 'https://data.binance.vision/data/spot/daily/klines/'+coin_name+'/4h/'+coin_name+'-4h-'+_y+'-'+_m+'-'+_d+'.zip'
+            file_name = coin_name+'-4h-'+_y+'-'+_m+'-'+_d
 
             try:
-                wget.download(_url, f'{folder_nm}/{file_name}')
+                wget.download(_url, folder_nm+'/'+file_name)
                 # Extract zip
-                with zipfile.ZipFile(f'{folder_nm}/{file_name}', 'r') as zip_ref:
+                with zipfile.ZipFile(folder_nm+'/'+file_name, 'r') as zip_ref:
                     zip_ref.extractall(folder_nm)
-                if os.path.exists(f'{folder_nm}/{file_name}'):
-                    os.remove(f'{folder_nm}/{file_name}')
+                if os.path.exists(folder_nm+'/'+file_name):
+                    os.remove(folder_nm+'/'+file_name)
             except ValueError:
                 print(ValueError)
                 pass
