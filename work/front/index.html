@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Binance Dashboard</title>
+  </head>
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/hollowcandlestick.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="main.js" defer></script>
+
+  <body>
+    <div id="nav">
+      <div id="navLogo"><img src="./images/Binance_Logo.png" /></div>
+      <nav>
+        <ul>
+          <li>
+            <img src="./images/maison.png" />&nbsp;&nbsp;<a href="#">Accueil</a>
+          </li>
+          <li>
+            <img src="./images/contacts.png" />&nbsp;&nbsp;<a href="#"
+              >Mes informations</a
+            >
+          </li>
+          <li>
+            <img src="./images/reglages.png" />&nbsp;&nbsp;<a href="#"
+              >Réglages</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div id="navFooter">Copyright &copy; Binance 2022</div>
+    </div>
+
+    <div id="container">
+      <nav>
+        <input id="searchBar" placeholder="Rechercher ..." />
+        <ul>
+          <li><a href="#">Analyses</a></li>
+          <li><a href="#">Statistiques</a></li>
+          <li><a href="#">Graphiques</a></li>
+        </ul>
+        <div id="personal">
+          <img
+            src="https://images.pexels.com/photos/2023384/pexels-photo-2023384.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          />
+          <h2>Ivan Cordeiro</h2>
+        </div>
+      </nav>
+
+      <main>
+        <h1>Tableau de bord</h1>
+
+        <div id="content">
+          <h5>Graphiques de <span>Binance</span></h5>
+          <small>Les 7 derniers jours</small>
+          <div class="charts">
+            <div class="lineChart">
+              <div class="graph graph1">
+                <h6>Stat 1</h6>
+                <div id="chart1"></div>
+              </div>
+              <div class="graph">
+                <h6>Stat 2</h6>
+                <div id="chart2"></div>
+              </div>
+              <div class="graph">
+                <h6>Stat 3</h6>
+                <div id="chart3"></div>
+              </div>
+            </div>
+            <div class="lineChart">
+              <div class="graph">
+                <h6>Stat 4</h6>
+                <div id="chart4"></div>
+              </div>
+              <div class="graph">
+                <h6>Stat 5</h6>
+                <div id="chart5"></div>
+              </div>
+              <div class="graph">
+                <h6>Stat 6</h6>
+                <div id="chart6"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
