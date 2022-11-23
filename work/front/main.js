@@ -35,4 +35,4 @@ Highcharts.getJSON(
       credits: false,
     });
   }
-).catch((err) => console.log(err));
+);

@@ -105,11 +105,18 @@ body {
   border-bottom: 1.5px solid #262835;
 }
 
+#container #searchIcon {
+  position: absolute;
+  left: 65px;
+  height: 15px;
+  width: 15px;
+}
+
 #container #searchBar {
   height: 35px;
   width: 30%;
 
-  padding: 5px 10px;
+  padding: 5px 10px 5px 40px;
 
   background: #1d2032;
   border-radius: 12px;
@@ -149,17 +156,64 @@ body {
   width: 25%;
 }
 
-#container #personal img {
+#container #personal #userIcon {
   object-fit: cover;
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  border: inset 2px #00a82a;
+  border: inset 2px #f3ba2f;
 }
 
 #container #personal h2 {
-  margin-left: 15px;
+  margin: 0 30px 0 15px;
   font-size: 18px;
+}
+
+#container #personal #btnWallet{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px 5px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+#container #personal #btnWallet:hover{
+  border: 1px solid #f3ba2f;
+}
+
+#container #personal #wallet{
+  position: absolute;
+  top: 35px;
+  left: -50px;
+  display: none;
+
+  padding: 10px 20px;
+
+  border-radius: 12px;
+  background: #fff;
+}
+
+#container #personal #wallet strong,
+#container #personal #wallet p {
+  text-align: center;
+  color: #161928;
+}
+
+#container #personal #pieceIcon {
+  height: 20px;
+  width: 20px;
+}
+
+#container #personal #notif {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  height: 12px;
+  width: 12px;
+  background: red;
+  border-radius: 50%;
 }
 
 #container main {
@@ -169,6 +223,19 @@ body {
 
 #container main #content {
   padding: 50px 0;
+}
+
+#container main #content #contentTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+}
+
+#container main #content #contentTitle #filterIcon {
+  height: 25px;
+  width: 25px;
 }
 
 #container main #content span {
@@ -217,6 +284,25 @@ small {
   font-size: 16px;
 }
 
+#container .charts .lineChart .graph .btnHighScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px 5px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+#container .charts .lineChart .graph .btnHighScreen:hover{
+  border: 1px solid #f3ba2f;
+}
+
+#container .charts .lineChart .graph .btnHighScreen img {
+  height: 20px;
+  width: 20px;
+}
+
 #chart1,
 #chart2,
 #chart3,
@@ -225,4 +311,16 @@ small {
 #chart6 {
   height: 100%;
   width: 100%;
+}
+
+.highGraph {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  height: 500px;
+  width: 800px;
+
+  background: #f1f1f1;
 }
