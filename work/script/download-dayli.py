@@ -9,7 +9,6 @@ import os
 
 # Globals vars
 path = '/home/jovyan/work/data/'
-#path = '/home/ivanb/Documents/testcryptos/'
 
 crypto_list = [
     'BNBBUSD',
@@ -28,7 +27,7 @@ for coin in crypto_list:
 
     # Dates
     end_date = datetime.now()
-    start_date = datetime.now()+timedelta(days= -(365*2))
+    start_date = datetime.now()+timedelta(days= -1)
     
     # Create folder if not exists
     folder_name = f'{path}{coin}'
@@ -60,6 +59,8 @@ for coin in crypto_list:
             except ValueError:
                 print(ValueError)
                 pass
+
+        #download_and_unzip(start_date, coin)
 
         pool.apply_async(download_and_unzip, (start_date, coin, folder_name,))
 
