@@ -8,7 +8,8 @@ from pathlib import Path
 import os
 
 # Globals vars
-path = '/home/jovyan/work/data/'
+#path = '/home/jovyan/work/data/'
+path = '/home/jovyan/work/script/results/'
 #path = '/home/ivanb/Documents/testcryptos/'
 
 crypto_list = [
@@ -16,7 +17,8 @@ crypto_list = [
     'ETHBUSD',
     'BTCBUSD',
     'AVAXBUSD',
-    'MATICBUSD'
+    'MATICBUSD',
+    'SOLBUSD'
 ]
 
 # Process size
