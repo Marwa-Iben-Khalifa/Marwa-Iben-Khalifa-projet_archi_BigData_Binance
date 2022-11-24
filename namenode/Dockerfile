@@ -1,7 +1,7 @@
 FROM bde2020/hadoop-base:2.0.0-hadoop3.2.1-java8
 
 RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install -y cron nano \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install -y cron nano python3 python3-pip \
     # Remove package lists for smaller image sizes
     && rm -rf /var/lib/apt/lists/* \
     && which cron \
@@ -25,7 +25,7 @@ RUN echo "*/1 * * * * root /bin/bash /work/scripts/test.sh" >> /etc/cron.d/root
 EXPOSE 9870
 
 # start cron in foreground (don't fork)
-ENTRYPOINT [ "cron", "-f" ]
+# ENTRYPOINT [ "cron", "-f" ]
 
 CMD ["/run.sh"]
 
