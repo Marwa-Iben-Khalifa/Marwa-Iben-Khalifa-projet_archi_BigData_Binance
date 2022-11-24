@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./images/Binance_Logo.png" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Binance | Graphiques</title>
+
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/hollowcandlestick.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="main.js" defer></script>
+    <script src="url.js" defer></script>
+
+  </head>
+  <body>
+    <div id="nav">
+      <div id="navLogo"><img src="./images/Binance_Logo.png" /></div>
+      <nav>
+        <ul>
+          <li>
+            <img src="./images/maison.png" />&nbsp;&nbsp;<a href="index.html"
+              >Accueil</a
+            >
+          </li>
+          <li>
+            <img src="./images/contacts.png" />&nbsp;&nbsp;<a href="#"
+              >Mes informations</a
+            >
+          </li>
+          <li>
+            <img src="./images/reglages.png" />&nbsp;&nbsp;<a href="#"
+              >Réglages</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div id="navFooter">Copyright &copy; Binance 2022</div>
+    </div>
+
+    <div id="graph">
+      <main>
+        <div class="fullScreenGraph"></div>
+      </main>
+    </div>
+  </body>
+</html>

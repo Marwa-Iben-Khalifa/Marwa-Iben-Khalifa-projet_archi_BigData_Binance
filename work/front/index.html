@@ -7,14 +7,16 @@
     <link rel="icon" type="image/x-icon" href="./images/Binance_Logo.png" />
     <link rel="stylesheet" href="style.css" />
     <title>Binance | Dashboard</title>
-  </head>
-  <script src="https://code.highcharts.com/stock/highstock.js"></script>
-  <script src="https://code.highcharts.com/stock/modules/data.js"></script>
-  <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
-  <script src="https://code.highcharts.com/stock/modules/hollowcandlestick.js"></script>
-  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-  <script src="main.js" defer></script>
 
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/hollowcandlestick.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="main.js" defer></script>
+    <script src="url.js" defer></script>
+
+  </head>
   <body>
     <div id="nav">
       <div id="navLogo"><img src="./images/Binance_Logo.png" /></div>
@@ -70,7 +72,6 @@
 
       <main>
         <h1>Tableau de bord</h1>
-
         <div id="content">
           <div id="contentTitle">
             <h5>Graphiques de <span>Binance</span></h5>
@@ -80,32 +81,119 @@
           <div class="charts">
             <div class="lineChart">
               <div class="graph graph1">
-                <h6>Stat 1</h6>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                  "
+                >
+                  <h6>Stat 1</h6>
+                  <a href="graph.html?graph=chart1"
+                    ><img
+                      height="20px"
+                      width="20px"
+                      src="./images/fullscreen.png"
+                  /></a>
+                </div>
                 <div id="chart1"></div>
               </div>
               <div class="graph">
-                <h6>Stat 2</h6>
-                <div id="chart2"></div>
-              </div>
-              <div class="highGraph">
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                  "
+                >
+                  <h6>Stat 2</h6>
+                  <a href="graph.html?graph=chart2"
+                    ><img
+                      height="20px"
+                      width="20px"
+                      src="./images/fullscreen.png"
+                  /></a>
+                </div>
                 <div id="chart2"></div>
               </div>
               <div class="graph">
-                <h6>Stat 3</h6>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                  "
+                >
+                  <h6>Stat 3</h6>
+                  <a href="graph.html?graph=chart3"
+                    ><img
+                      height="20px"
+                      width="20px"
+                      src="./images/fullscreen.png"
+                  /></a>
+                </div>
                 <div id="chart3"></div>
               </div>
             </div>
             <div class="lineChart">
               <div class="graph">
-                <h6>Stat 4</h6>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                  "
+                >
+                  <h6>Stat 4</h6>
+                  <a href="graph.html?graph=chart4"
+                    ><img
+                      height="20px"
+                      width="20px"
+                      src="./images/fullscreen.png"
+                  /></a>
+                </div>
                 <div id="chart4"></div>
               </div>
               <div class="graph">
-                <h6>Stat 5</h6>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                  "
+                >
+                  <h6>Stat 5</h6>
+                  <a href="graph.html?graph=chart5"
+                    ><img
+                      height="20px"
+                      width="20px"
+                      src="./images/fullscreen.png"
+                  /></a>
+                </div>
                 <div id="chart5"></div>
               </div>
               <div class="graph">
-                <h6>Stat 6</h6>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                  "
+                >
+                  <h6>Stat 6</h6>
+                  <a href="graph.html?graph=chart6"
+                    ><img
+                      height="20px"
+                      width="20px"
+                      src="./images/fullscreen.png"
+                  /></a>
+                </div>
                 <div id="chart6"></div>
               </div>
             </div>
