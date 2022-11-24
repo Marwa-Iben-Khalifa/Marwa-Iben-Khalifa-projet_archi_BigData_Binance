@@ -8,7 +8,6 @@ from pyspark.sql.window import Window
 spark = SparkSession.builder.getOrCreate()
 
 path = "hdfs://localhost:9000/data/BNBBUSD*"
-#df = spark.read.csv("hdfs://localhost:9000/*")
 
 schema = StructType() \
         .add("timestamp",StringType(),True) \
@@ -29,4 +28,5 @@ df_binance = spark.read.format("csv") \
       .schema(schema) \
       .load(path)
 df_binance.show(5)
+
 print(df_binance.show(5))
