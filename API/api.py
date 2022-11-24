@@ -13,6 +13,6 @@ app.config["DEBUG"] = False
 @app.route('/api/stock', methods=['GET'])
 def buys_predict():
     coin = request.args.get('coin')
-    return json.dumps(get_all_data(coin))
+    return get_all_data(coin)
 
 app.run()
