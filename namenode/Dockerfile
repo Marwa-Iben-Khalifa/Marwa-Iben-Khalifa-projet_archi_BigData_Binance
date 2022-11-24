@@ -17,10 +17,9 @@ ADD run.sh /run.sh
 RUN chmod a+x /run.sh
 
 
-# register cron jobs to start the applications and redirects their stdout/stderr
-# to the stdout/stderr of the entry process by adding lines to /etc/crontab
-RUN echo "@reboot root /bin/bash /work/scripts/test.sh" >> /etc/cron.d/root
-RUN echo "*/1 * * * * root /bin/bash /work/scripts/test.sh" >> /etc/cron.d/root
+# register cron jobs to start the scripts by adding lines to /etc/crontab
+RUN echo '@reboot root /bin/bash /work/script/startup.sh' >> /etc/crontab
+RUN echo '* * * * * root /bin/bash /work/script/test.sh' >> /etc/crontab
 
 EXPOSE 9870
 
