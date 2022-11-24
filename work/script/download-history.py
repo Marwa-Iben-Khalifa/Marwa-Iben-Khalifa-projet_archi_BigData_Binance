@@ -62,7 +62,6 @@ for coin in crypto_list:
                 if os.path.exists(folder_nm+'/'+file_name):
                     os.remove(folder_nm+'/'+file_name)
             except ValueError:
-                print(ValueError)
                 pass
 
         pool.apply_async(download_and_unzip, (start_date, coin, folder_name,))
