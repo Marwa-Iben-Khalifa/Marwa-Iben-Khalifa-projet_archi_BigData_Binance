@@ -1,2 +1,3 @@
 work\spark-warehouse\
 .docker
+.env

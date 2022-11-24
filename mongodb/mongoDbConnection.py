@@ -1,8 +1,11 @@
+import os
+import dotenv
 from pymongo import MongoClient
-
+dotenv.load_dotenv()
+pwd = os.getenv('dbPassword')
 
 client = MongoClient(
-    "mongodb+srv://hicham:1FDA2LrFuNnJgCWD@hichamcluster.q07np.mongodb.net/?retryWrites=true&w=majority")
+    f"mongodb+srv://hicham:{pwd}@hichamcluster.q07np.mongodb.net/?retryWrites=true&w=majority")
 print("Connection Successful")
 
 
