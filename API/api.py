@@ -1,23 +1,18 @@
+import pandas as pd
+import json
 import flask
-from create_routes import create_routes
+from flask import render_template, send_from_directory
+from flask import Flask, request
+from mongoDbConnection import get_all_data
 
-Dev = True
-
-# Initialize flask
+# FLASK
 app = flask.Flask(__name__)
-app.config["DEBUG"] = Dev
-
-# Set headers json for all requests
+app.config["DEBUG"] = False
 
 
-@app.after_request
-def apply_caching(response):
-    response.headers["Content-Type"] = "application/json"
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    return response
-
-
-# Import routes
-create_routes(app)
+@app.route('/api/stock', methods=['GET'])
+def buys_predict():
+    coin = request.args.get('coin')
+    return json.dumps(get_all_data(coin))
 
 app.run()
