@@ -54,6 +54,7 @@ for coin in crypto_list:
             file_name = coin_name+'-4h-'+_y+'-'+_m+'-'+_d
 
             try:
+                print(file_name)
                 wget.download(_url, folder_nm+'/'+file_name)
                 # Extract zip
                 with zipfile.ZipFile(folder_nm+'/'+file_name, 'r') as zip_ref:

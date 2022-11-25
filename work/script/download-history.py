@@ -23,7 +23,7 @@ crypto_list = [
 ]
 
 # Process size
-pool_size = int((multiprocessing.cpu_count()*4))
+pool_size = int((multiprocessing.cpu_count()*2))
 # Initialise pool
 pool = Pool(pool_size)
 
@@ -34,8 +34,6 @@ for coin in crypto_list:
     start_date = datetime.now()+timedelta(days= -(365*2))
     
     # Create folder if not exists
-    #folder_name = f'{path}{coin}'
-    #Path(folder_name).mkdir(parents=True, exist_ok=True)
     folder_name = path
 
     while start_date < end_date:
@@ -55,6 +53,7 @@ for coin in crypto_list:
             file_name = coin_name+'-4h-'+_y+'-'+_m+'-'+_d
 
             try:
+                print(file_name)
                 wget.download(_url, folder_nm+'/'+file_name)
                 # Extract zip
                 with zipfile.ZipFile(folder_nm+'/'+file_name, 'r') as zip_ref:
@@ -64,10 +63,17 @@ for coin in crypto_list:
             except ValueError:
                 pass
 
+        # try:
+        #     download_and_unzip(start_date, coin, folder_name)
+        # except:
+        #     pass
         pool.apply_async(download_and_unzip, (start_date, coin, folder_name,))
 
         start_date = start_date+timedelta(days=1)
 
-
+    
 pool.close()
 pool.join()
+
+
+print('End dl')

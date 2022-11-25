@@ -2,6 +2,8 @@ import os
 import dotenv
 from pymongo import MongoClient
 import pandas as pd
+
+
 dotenv.load_dotenv()
 pwd = os.getenv('dbPassword')
 
@@ -14,14 +16,15 @@ mydb = client["projectDB"]
 
 
 def get_all_data(coin):
+    # Initialise pool
     mycol = mydb[coin]
     result = mycol.find()
+    print("sah")
     df = pd.DataFrame(list(result))
     df.drop(columns=['_id', 'volume', 'close_time', 'quote_asset_volume', 'number_of_trades', 'taker_buy_base_asset_volume', 'taker_buy_quote_asset_volume', 'ignore'], axis=1, inplace=True)
     df = df.astype({'timestamp': 'int'})
     df = df.reindex(columns = ['timestamp','open','high', 'low', 'close', 'sma', 'smaLouche'])
     df.sort_values(by=["timestamp"], inplace = True)
-    print(df.dtypes)
     return df.to_json(orient="split")
 
 dblist = client.list_database_names()
