@@ -9,10 +9,14 @@ from mongoDbConnection import get_all_data
 app = flask.Flask(__name__)
 app.config["DEBUG"] = False
 
+@app.after_request
+def apply_caching(response):
+    response.headers["Content-Type"] = "application/json"
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
+
 
 @app.route('/api/stock', methods=['GET'])
 def buys_predict():
     coin = request.args.get('coin')
     return get_all_data(coin)
-
-app.run()

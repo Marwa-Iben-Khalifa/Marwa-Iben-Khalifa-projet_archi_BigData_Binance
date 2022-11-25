@@ -1,223 +1,179 @@
-let plots = [];
+const crypto_list = [
+  'BNBBUSD',
+  'ETHBUSD',
+  'BTCBUSD',
+  'AVAXBUSD',
+  'MATICBUSD',
+  'SOLBUSD'
+]
 
-Highcharts.getJSON(
-  "https://api.binance.com/api/v3/klines?symbol=BTCBUSD&interval=4h",
-  function (data) {
-    Highcharts.stockChart("chart1", {
-      chart: {
-        backgroundColor: "transparent",
-        color: "#f1f1f1",
-        polar: true,
-      },
-      rangeSelector: {
-        selected: 1,
-      },
-      navigator: {
-        series: {
-          color: Highcharts.getOptions().colors[0],
-        },
-      },
-      xAxis: {
-        //#2dff2d
-        plotLines: plots,
-      },
-      series: [
-        {
-          type: "hollowcandlestick",
-          name: "Hollow Candlestick",
-          data: data.map((candle) => {
-            return candle.map((item) => {
-              return parseFloat(item);
-            });
+const idlist = [
+  'chart1',
+  'chart2',
+  'chart3',
+  'chart4',
+  'chart5',
+  'chart6',
+
+]
+
+// Function to create charts
+async function create_chart(coin, containerId) {
+  const res = await fetch(`http://127.0.0.1:5000/api/stock?coin=${coin}`);
+  const result = await res.json();
+
+  let candles = [];
+
+  const indicators = [];
+  result.columns.map((elem, index) => {
+    if (index > 5) {
+
+      indicators.push({
+          type: "line",
+          linkedTo: "crypto",
+          name: elem.split("_")[0],
+          zIndex: 1,
+          data: result.data.map((e) => {
+              return [e[1], e[index]];
           }),
+      });
+      
+    }
+  });
+
+  result.data.map((elem) => {
+    candles.push([elem[1], elem[2], elem[3], elem[4], elem[5]]);
+  });
+
+  // create the chart
+  Highcharts.stockChart(containerId, {
+    chart: {
+      backgroundColor: "#1e1e1d",
+    },
+    rangeSelector: {
+      buttons: [
+        {
+          type: "hour",
+          count: 1,
+          text: "1h",
+        },
+        {
+          type: "day",
+          count: 1,
+          text: "1d",
+        },
+        {
+          type: "month",
+          count: 1,
+          text: "1m",
+        },
+        {
+          type: "year",
+          count: 1,
+          text: "1y",
+        },
+        {
+          type: "all",
+          text: "All",
         },
       ],
-      credits: false,
-    });
-  }
-);
+      inputEnabled: false, // it supports only days
+      selected: 1, // all
+    },
+    credits: { enabled: false },
+    exporting: { enabled: false },
 
-Highcharts.getJSON(
-  "https://api.binance.com/api/v3/klines?symbol=BTCBUSD&interval=4h",
-  function (data) {
-    Highcharts.stockChart("chart2", {
-      chart: {
-        backgroundColor: "transparent",
-        color: "#f1f1f1",
-        polar: true,
-      },
-      rangeSelector: {
-        selected: 1,
-      },
-      navigator: {
-        series: {
-          color: Highcharts.getOptions().colors[0],
+    yAxis: [
+      {
+        gridLineColor: "transparent",
+        gridTextColor: "#ffffff",
+        lineColor: "transparent",
+        tickColor: "transparent",
+        startOnTick: false,
+        endOnTick: false,
+        labels: {
+          align: "right",
+          x: -3,
+        },
+        title: {
+          text: "OHLC",
+        },
+        height: "70%",
+        lineWidth: 1,
+        resize: {
+          enabled: false,
         },
       },
-      xAxis: {
-        //#2dff2d
-        plotLines: plots,
-      },
-      series: [
-        {
-          type: "hollowcandlestick",
-          name: "Hollow Candlestick",
-          data: data.map((candle) => {
-            return candle.map((item) => {
-              return parseFloat(item);
-            });
-          }),
-        },
-      ],
-      credits: false,
-    });
-  }
-);
 
-Highcharts.getJSON(
-  "https://api.binance.com/api/v3/klines?symbol=BTCBUSD&interval=8h",
-  function (data) {
-    Highcharts.stockChart("chart3", {
-      chart: {
-        backgroundColor: "transparent",
-        color: "#f1f1f1",
-        polar: true,
-      },
-      rangeSelector: {
-        selected: 1,
-      },
-      navigator: {
-        series: {
-          color: Highcharts.getOptions().colors[0],
+      {
+        gridLineColor: "transparent",
+        gridTextColor: "#ffffff",
+        lineColor: "transparent",
+        tickColor: "transparent",
+        height: "10%",
+        top: "90%",
+        lineWidth: 1,
+        resize: {
+          enabled: true,
         },
       },
-      xAxis: {
-        //#2dff2d
-        plotLines: plots,
-      },
-      series: [
-        {
-          type: "hollowcandlestick",
-          name: "Hollow Candlestick",
-          data: data.map((candle) => {
-            return candle.map((item) => {
-              return parseFloat(item);
-            });
-          }),
+      {
+        gridLineColor: "transparent",
+        gridTextColor: "#ffffff",
+        lineColor: "transparent",
+        tickColor: "transparent",
+        height: "20%",
+        top: "70%",
+        lineWidth: 1,
+        resize: {
+          enabled: true,
         },
-      ],
-      credits: false,
-    });
-  }
-);
+      },
+      {
+        gridLineColor: "transparent",
+        gridTextColor: "#ffffff",
+        lineColor: "transparent",
+        tickColor: "transparent",
+        height: "10%",
+        top: "80%",
+        lineWidth: 1,
+        resize: {
+          enabled: true,
+        },
+      },
+    ],
 
-Highcharts.getJSON(
-  "https://api.binance.com/api/v3/klines?symbol=BTCBUSD&interval=1h",
-  function (data) {
-    Highcharts.stockChart("chart4", {
-      chart: {
-        backgroundColor: "transparent",
-        color: "#f1f1f1",
-        polar: true,
-      },
-      rangeSelector: {
-        selected: 1,
-      },
-      navigator: {
-        series: {
-          color: Highcharts.getOptions().colors[0],
-        },
-      },
-      xAxis: {
-        //#2dff2d
-        plotLines: plots,
-      },
-      series: [
-        {
-          type: "hollowcandlestick",
-          name: "Hollow Candlestick",
-          data: data.map((candle) => {
-            return candle.map((item) => {
-              return parseFloat(item);
-            });
-          }),
-        },
-      ],
-      credits: false,
-    });
-  }
-);
+    tooltip: {
+      split: true,
+    },
 
-Highcharts.getJSON(
-  "https://api.binance.com/api/v3/klines?symbol=BTCBUSD&interval=2h",
-  function (data) {
-    Highcharts.stockChart("chart5", {
-      chart: {
-        backgroundColor: "transparent",
-        color: "#f1f1f1",
-        polar: true,
+    plotOptions: {
+      hollowcandlestick: {
+        color: "#ff6d29",
+        upColor: "#29b1ff",
       },
-      rangeSelector: {
-        selected: 1,
-      },
-      navigator: {
-        series: {
-          color: Highcharts.getOptions().colors[0],
-        },
-      },
-      xAxis: {
-        //#2dff2d
-        plotLines: plots,
-      },
-      series: [
-        {
-          type: "hollowcandlestick",
-          name: "Hollow Candlestick",
-          data: data.map((candle) => {
-            return candle.map((item) => {
-              return parseFloat(item);
-            });
-          }),
-        },
-      ],
-      credits: false,
-    });
-  }
-);
+      series: {},
+    },
 
-Highcharts.getJSON(
-  "https://api.binance.com/api/v3/klines?symbol=BTCBUSD&interval=6h",
-  function (data) {
-    Highcharts.stockChart("chart6", {
-      chart: {
-        backgroundColor: "transparent",
-        color: "#f1f1f1",
-        polar: true,
+    series: [
+      {
+        name: "Coin",
+        id: "crypto",
+        type: "hollowcandlestick",
+        zIndex: 2,
+        data: candles,
       },
-      rangeSelector: {
-        selected: 1,
-      },
-      navigator: {
-        series: {
-          color: Highcharts.getOptions().colors[0],
-        },
-      },
-      xAxis: {
-        //#2dff2d
-        plotLines: plots,
-      },
-      series: [
-        {
-          type: "hollowcandlestick",
-          name: "Hollow Candlestick",
-          data: data.map((candle) => {
-            return candle.map((item) => {
-              return parseFloat(item);
-            });
-          }),
-        },
-      ],
-      credits: false,
-    });
-  }
-);
+      ...indicators.map((e) => {
+        return e;
+      }),
+    ],
+  });
+}
+
+
+for (let i = 0; i < crypto_list.length; i++) {
+  const crypt = crypto_list[i]
+  const id_chart = idlist[i]
+
+  create_chart(crypt, id_chart)
+}

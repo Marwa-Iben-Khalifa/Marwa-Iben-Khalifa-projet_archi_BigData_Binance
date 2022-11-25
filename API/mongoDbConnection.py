@@ -17,7 +17,10 @@ def get_all_data(coin):
     mycol = mydb[coin]
     result = mycol.find()
     df = pd.DataFrame(list(result))
-    df.drop(columns=['volume', 'close_time', 'quote_asset_volume', 'number_of_trades', 'taker_buy_base_asset_volume', 'taker_buy_quote_asset_volume', 'ignore'], axis=1, inplace=True)
+    df.drop(columns=['_id', 'volume', 'close_time', 'quote_asset_volume', 'number_of_trades', 'taker_buy_base_asset_volume', 'taker_buy_quote_asset_volume', 'ignore'], axis=1, inplace=True)
+    #df = df.astype({'timestamp': 'int'})
+    df = df.reindex(columns = ['timestamp','open','high', 'low', 'close'])
+    print(df.dtypes)
     return df.to_json(orient="split")
 
 dblist = client.list_database_names()
