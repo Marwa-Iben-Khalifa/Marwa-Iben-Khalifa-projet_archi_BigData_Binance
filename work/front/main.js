@@ -25,24 +25,25 @@ async function create_chart(coin, containerId) {
   let candles = [];
 
   const indicators = [];
-  result.columns.map((elem, index) => {
-    if (index > 5) {
+  // result.columns.map((elem, index) => {
+  //   if (index > 5) {
 
-      indicators.push({
-          type: "line",
-          linkedTo: "crypto",
-          name: elem.split("_")[0],
-          zIndex: 1,
-          data: result.data.map((e) => {
-              return [e[1], e[index]];
-          }),
-      });
+  //     indicators.push({
+  //         type: "line",
+  //         linkedTo: "crypto",
+  //         name: elem.split("_")[0],
+  //         zIndex: 1,
+  //         data: result.data.map((e) => {
+  //             return [e[1], e[index]];
+  //         }),
+  //     });
       
-    }
-  });
+  //   }
+  // });
 
   result.data.map((elem) => {
-    candles.push([elem[1], elem[2], elem[3], elem[4], elem[5]]);
+    candles.push([elem[0], elem[1], elem[2], elem[3], elem[4]]);
+    console.log(elem[0])
   });
 
   // create the chart
