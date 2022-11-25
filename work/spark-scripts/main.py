@@ -45,6 +45,29 @@ for crypto in crypto_list:
 
       df_binance = df_binance.withColumn("_id", col("timestamp"))
 
+
+      partirioned_by_id = Window.orderBy("timestamp")
+
+      @udf(returnType = FloatType())
+      def sma(oldmin, old, new):
+            if not oldmin == None:
+                  return ((oldmin + old + new) / 3)
+            else:
+                  return 0
+                  
+      @udf(returnType = FloatType())
+      def sma_louche(oldmin, new):
+            if not oldmin == None:
+                  return ((oldmin + new) / 2)
+            else:
+                  return 0
+
+     # df_binance = df_binance.withColumn("_id", col("timestamp"))
+
+      df_binance = df_binance.withColumn("sma", sma(F.lag("close", offset=2).over(partirioned_by_id), F.lag("close", offset=1).over(partirioned_by_id), F.lag("close", offset=0).over(partirioned_by_id)))
+
+      df_binance = df_binance.withColumn("smaLouche", sma_louche(F.lag("close", offset=24).over(partirioned_by_id), F.lag("close", offset=0).over(partirioned_by_id)))
+
       json_data = df_binance.toJSON(use_unicode=True).map(lambda j: json.loads(j)).collect()
 
       instert_data(crypto, json_data)
