@@ -11,4 +11,5 @@ hadoop fs -put /work/data/* /data/
 echo "Files pushed to hdfs"
 rm -rf /work/data/* 
 echo "Add to db"
-/work/spark-scripts/spark-to-db.sh
+cd /work/spark-scripts/
+./spark-to-db.sh

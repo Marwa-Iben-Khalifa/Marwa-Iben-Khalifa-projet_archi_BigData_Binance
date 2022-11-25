@@ -43,7 +43,6 @@ async function create_chart(coin, containerId) {
 
   result.data.map((elem) => {
     candles.push([elem[0], elem[1], elem[2], elem[3], elem[4]]);
-    console.log(elem[0])
   });
 
   // create the chart
